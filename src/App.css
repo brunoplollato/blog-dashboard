@@ -1,0 +1,17 @@
+.compact .list-item p,
+.compact .list-item .list-item-arrow {
+  display: none;
+}
+.ql-editor {
+  min-height: 477px;
+  max-height: 477px;
+}
+
+.ql-toolbar {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.ql-container {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
