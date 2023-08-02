@@ -1,10 +1,11 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import { FiSave } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import 'react-quill/dist/quill.snow.css';
 import Input from '../../../components/Input';
 import CustomSelect from '../../../components/CustomSelect';
-import { axiosInstance, axiosPrivate } from '../../../utils/axios';
+import { axiosPrivate } from '../../../utils/axios';
 import { BASE_URL } from '../../../environments';
 import FormAction from '../../../components/FormAction';
 import CustomSwitch from '../../../components/CustomSwitch';
@@ -82,7 +83,6 @@ function NewPost() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Assuming you have an inputChangeHandler for each input field
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setPost((prev) => ({
@@ -165,23 +165,11 @@ function NewPost() {
         published: post.published,
         cover: post.cover,
       };
-      try {
-        await createPost(body);
-        // Reset the form and clear errors
-        setPost({
-          title: '',
-          slug: '',
-          content: '',
-          categories: [],
-          tags: [],
-        });
-        setErrors({});
-      } catch (error) {
-        console.log('Error creating new post:', error);
-      } finally {
-        setIsLoading(false);
-      }
+      const res = await createPost(body);
+
+      return toast(res.message);
     }
+    setIsLoading(false);
   };
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -310,6 +298,7 @@ function NewPost() {
               text="Publish"
               color="purple"
               name="Publish"
+              disabled={!isLoading}
             />
           </div>
         </div>

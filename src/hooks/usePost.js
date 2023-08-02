@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import { axiosPrivate } from '../utils/axios';
 
 export default function usePost() {
-  const [error, setError] = useState(null);
+  const endpoint = 'api/posts';
 
   const createPost = async (data) => {
-    console.log('🚀 ~ file: usePost.js:8 ~ createPost ~ data:', data);
     const {
       title,
       slug,
@@ -16,7 +14,6 @@ export default function usePost() {
       published,
       cover,
     } = data;
-    const endpoint = 'api/posts';
     return await axiosPrivate
       .post(endpoint, {
         title,
@@ -29,15 +26,26 @@ export default function usePost() {
         cover,
       })
       .then((res) => {
-        console.log('🚀 ~ file: usePost.js:32 ~ .then ~ res:', res);
+        return res.data;
       })
       .catch((err) => {
-        setError(err.response.data);
+        return err;
+      });
+  };
+
+  const getPosts = async () => {
+    return await axiosPrivate
+      .get(endpoint)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        return err;
       });
   };
 
   return {
     createPost,
-    error,
+    getPosts,
   };
 }

@@ -1,3 +1,5 @@
+import PropagateLoader from 'react-spinners/PropagateLoader';
+
 export default function FormAction({
   handleSubmit,
   type = 'Button',
@@ -6,8 +8,9 @@ export default function FormAction({
   color,
   icon,
   name,
+  disabled,
 }) {
-  const classes = `group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-${color}-400 hover:bg-${color}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-${color}-500 mt-5`;
+  const classes = `group relative w-full h-10 flex items-center justify-center px-4 border border-transparent text-sm font-medium rounded-md text-white bg-${color}-700 hover:bg-${color}-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-${color}-500 mt-5`;
   return (
     <>
       {action === 'submit' ? (
@@ -16,8 +19,14 @@ export default function FormAction({
           className={classes}
           onSubmit={handleSubmit}
           name={name}
+          disabled={disabled}
         >
-          {icon} {text}
+          {!disabled && (
+            <>
+              {icon}
+              {text}
+            </>
+          )}
         </button>
       ) : (
         <>
@@ -26,8 +35,25 @@ export default function FormAction({
             className={classes}
             onClick={handleSubmit}
             name={name}
+            disabled={disabled}
           >
-            {icon} {text}
+            {!disabled ? (
+              <>
+                {icon}
+                {text}
+              </>
+            ) : (
+              <PropagateLoader
+                color="rgba(255, 255, 255, .5)"
+                loading={disabled}
+                size={10}
+                cssOverride={{
+                  top: '-4px',
+                }}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            )}
           </button>
         </>
       )}

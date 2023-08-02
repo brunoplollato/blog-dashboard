@@ -11,7 +11,7 @@ function UserProvider({ children }) {
   useEffect(() => {
     setLoading(true);
     const { access_token } = JSON.parse(localStorage.getItem('tokens'));
-    if (!!access_token.length) {
+    if (!!access_token?.length) {
       const { payload } = jwt_decode(access_token);
       setUser(payload);
       setLoading(false);

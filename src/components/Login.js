@@ -13,6 +13,7 @@ fields.forEach((field) => (fieldsState[field.id] = ''));
 
 export default function Login() {
   const [loginState, setLoginState] = useState(fieldsState);
+  const [isLoading, setIsLoading] = useState(false);
   const { loginUser, loginUserProvider, error } = useAuth();
 
   const handleChange = (e) => {
@@ -21,6 +22,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const provider = e.nativeEvent.submitter.name;
     authenticateUser(provider);
   };
@@ -37,6 +39,7 @@ export default function Login() {
       } else {
         await loginUserProvider(provider.toLowerCase());
       }
+      setIsLoading(false);
     } catch (error) {
       console.group();
       console.log(
@@ -49,6 +52,7 @@ export default function Login() {
       );
       console.log(`🔥 ${error}`);
       console.groupEnd();
+      setIsLoading(false);
     }
   };
 
@@ -78,6 +82,7 @@ export default function Login() {
         text="Login"
         color="green"
         name="Local"
+        disabled={isLoading}
       />
       <FormAction
         handleSubmit={handleSubmit}
@@ -85,6 +90,7 @@ export default function Login() {
         text="GitHub"
         color="gray"
         name="GitHub"
+        disabled={isLoading}
       />
       <FormAction
         handleSubmit={handleSubmit}
@@ -92,6 +98,7 @@ export default function Login() {
         text="Google"
         color="red"
         name="Google"
+        disabled={isLoading}
       />
     </form>
   );

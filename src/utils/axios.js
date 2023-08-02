@@ -51,14 +51,17 @@ axiosPrivate.interceptors.response.use(
       localStorage.setItem(
         'tokens',
         JSON.stringify({
-          access_token: data.accessToken,
-          refresh_token: data.refreshToken,
+          access_token: data.data.accessToken,
+          refresh_token: data.data.refreshToken,
         })
       );
       return axiosPrivate(originalRequest);
     }
+    if (error.response.status !== 200 && error.response.status !== 401)
+      return Promise.reject(error.response.data);
+
     const navigate = useNavigate();
     navigate('/');
-    return Promise.reject(error);
+    return Promise.reject(error.response.data.message);
   }
 );
