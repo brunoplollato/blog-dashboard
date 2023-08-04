@@ -2,6 +2,7 @@ import jwt_decode from 'jwt-decode';
 import { useState, useContext } from 'react';
 import { axiosInstance } from '../utils/axios';
 import { UserDispatchContext } from '../contexts/UserContext';
+import { toast } from 'react-toastify';
 
 export default function useAuth() {
   const [error, setError] = useState(null);
@@ -70,17 +71,31 @@ export default function useAuth() {
             refresh_token: data.data.refreshToken,
           })
         );
+        toast.info('A verification email has been sent');
         setLoading(false);
       })
       .catch((err) => {
+        toast.error(err.response.data.message);
         setError(err.response.data);
         setLoading(false);
       });
   };
 
+  const logoutUser = () => {
+    setUser(null);
+    localStorage.setItem(
+      'tokens',
+      JSON.stringify({
+        access_token: '',
+        refresh_token: '',
+      })
+    );
+  };
+
   return {
     loginUser,
     loginUserProvider,
+    logoutUser,
     registerUser,
     error,
   };

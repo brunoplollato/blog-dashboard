@@ -2,7 +2,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "cSpell.enableFiletypes": [
-    "scss"
-  ]
+  "cSpell.enableFiletypes": ["scss"],
+  "cSpell.words": ["Signup", "tanstack", "toastify"]
 }

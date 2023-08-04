@@ -15,3 +15,8 @@
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
+
+.bg-login {
+  background-color: #eae1f9;
+  background-image: url('./assets/images/bg-waves.svg');
+}
