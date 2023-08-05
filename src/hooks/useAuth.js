@@ -81,6 +81,30 @@ export default function useAuth() {
       });
   };
 
+  const verifyUser = async (token) => {
+    setLoading(true);
+    const endpoint = `auth/verify-email?token=${token}`;
+    return await axiosInstance
+      .get(endpoint)
+      .then(({ data }) => {
+        setUser(data.data);
+        localStorage.setItem(
+          'tokens',
+          JSON.stringify({
+            access_token: data.data.accessToken,
+            refresh_token: data.data.refreshToken,
+          })
+        );
+        toast.success('Email verified');
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+        setError(err.response.data);
+        setLoading(false);
+      });
+  };
+
   const logoutUser = () => {
     setUser(null);
     localStorage.setItem(
@@ -95,6 +119,7 @@ export default function useAuth() {
   return {
     loginUser,
     loginUserProvider,
+    verifyUser,
     logoutUser,
     registerUser,
     error,

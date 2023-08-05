@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Breadcrumb = ({ items }) => {
   return (
-    <nav className="my-2">
+    <nav className="my-2 mb-10">
       <ul className="flex">
         {items.map(({ text, link }, index) => (
           <li key={index} className="flex items-center">

@@ -297,9 +297,9 @@ function Posts() {
         ]}
       />
       <h2 className="text-xl font-bold mb-5">Posts</h2>
-      <div className="flex gap-5">
+      <div className="flex gap-5 h-full">
         <div className="flex flex-col gap-5 w-full">
-          <div className="bg-white border rounded-md p-4 border-slate-300 drop-shadow-sm">
+          <div className="bg-white border rounded-md p-4 border-slate-300 drop-shadow-sm h-full">
             <div className="flex justify-between gap-5">
               <DebouncedInput
                 value={globalFilter ?? ''}

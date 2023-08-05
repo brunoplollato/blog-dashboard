@@ -168,13 +168,12 @@ function NewPost() {
         published: post.published,
         cover: post.cover,
       };
+      console.log('🚀 ~ file: index.jsx:171 ~ handleSubmit ~ body:', body);
+
       const res = await createPost(body);
-      console.log('🚀 ~ file: NewPost.js:169 ~ handleSubmit ~ res:', res);
 
       setIsLoading(false);
-      return res.status
-        ? toast.success(res.message) && navigate('/dashboard/posts')
-        : toast.error(res.message);
+      return res.status && navigate('/dashboard/posts');
     }
     setIsLoading(false);
   };

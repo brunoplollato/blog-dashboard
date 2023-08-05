@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { axiosPrivate } from '../utils/axios';
 
 export default function usePost() {
@@ -26,9 +27,11 @@ export default function usePost() {
         cover,
       })
       .then((res) => {
+        toast.success(res.message);
         return res.data;
       })
       .catch((err) => {
+        toast.error(err.message);
         return err;
       });
   };
@@ -58,8 +61,6 @@ export default function usePost() {
   };
 
   const updatePost = async (id, data) => {
-    console.log('🚀 ~ file: usePost.js:61 ~ updatePost ~ data:', data);
-    console.log('🚀 ~ file: usePost.js:61 ~ updatePost ~ id:', id);
     return await axiosPrivate
       .put(`${endpoint}/${id}`, data)
       .then((res) => {

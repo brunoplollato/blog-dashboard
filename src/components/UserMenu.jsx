@@ -1,16 +1,22 @@
 import avatar from '../assets/images/avatar.png';
+import useOutsideClick from '../hooks/useOutsideClick';
 import DropDown from './DropDown';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 function UserMenu() {
   const [isActive, setActive] = useState(false);
+  const menuEl = useRef(null);
 
   const handleDropDown = () => {
     setActive((prev) => !prev);
   };
 
+  useOutsideClick(menuEl, () => {
+    if (isActive) setActive(false);
+  });
+
   return (
-    <div className="relative" onClick={handleDropDown}>
+    <div className="relative" onClick={handleDropDown} ref={menuEl}>
       <div className="flex items-center gap-2 bg-indigo-200 rounded-full p-1 cursor-pointer w-28">
         <div className="rounded-full w-8 h-8">
           <img

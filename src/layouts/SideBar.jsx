@@ -6,7 +6,7 @@ import {
   FiTag,
   FiUsers,
 } from 'react-icons/fi';
-import ListItem from '../components/ListItem';
+import ListItem from '../components/MenuItem';
 import { useState } from 'react';
 
 function SideBar({ isSelected }) {

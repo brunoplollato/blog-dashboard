@@ -2,15 +2,7 @@ import { useState } from 'react';
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-function ListItem({
-  icon,
-  text,
-  to,
-  customClass = '',
-  isSelected,
-  children,
-  ...props
-}) {
+function MenuItem({ icon, text, to, customClass = '', isSelected, children }) {
   const [isActive, setActive] = useState(false);
   return (
     <li onClick={() => setActive((prev) => !prev)} text={text}>
@@ -40,4 +32,4 @@ function ListItem({
   );
 }
 
-export default ListItem;
+export default MenuItem;

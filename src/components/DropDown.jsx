@@ -1,9 +1,10 @@
 import { FiLogOut, FiSettings, FiUser } from 'react-icons/fi';
-import ListItem from './ListItem';
+import ListItem from './MenuItem';
 import useAuth from '../hooks/useAuth';
 
 function DropDown({ isActive }) {
   const { logoutUser } = useAuth();
+
   return (
     <>
       {isActive && (
