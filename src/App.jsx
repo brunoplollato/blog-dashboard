@@ -15,6 +15,7 @@ import NewPost from './pages/Dashboard/Posts/New';
 import EditPost from './pages/Dashboard/Posts/Edit';
 import EmailVerify from './pages/Auth/VerifyEmail';
 import UserProfile from './pages/User/Profile';
+import NotFound from './pages/404';
 
 function App() {
   const queryClient = new QueryClient();
@@ -31,6 +32,14 @@ function App() {
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/verify-email/:id" element={<EmailVerify />} />
+                <Route
+                  path="/*"
+                  element={
+                    <ProtectedRoute>
+                      <NotFound />
+                    </ProtectedRoute>
+                  }
+                />
                 <Route
                   path="/user/profile"
                   element={

@@ -15,6 +15,10 @@ function UserProvider({ children }: PropsWithChildren) {
     ) as Tokens;
     if (!!access_token?.length) {
       const { payload } = jwt_decode(access_token) as { payload: User };
+      console.log(
+        '🚀 ~ file: UserContext.tsx:18 ~ useEffect ~ payload:',
+        payload
+      );
       setUser(payload);
       setLoading(false);
     }

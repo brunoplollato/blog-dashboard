@@ -11,7 +11,7 @@ function CustomSwitch({
   isRequired,
 }: CustomSwitch) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-4">
       <label
         htmlFor={labelFor}
         className={`${!hasLabel ? 'sr-only' : ''} text-md font-bold mb-2`}
@@ -25,6 +25,7 @@ function CustomSwitch({
         checked={checked}
         onColor="#22C55E"
         required={isRequired}
+        borderRadius={6}
       />
     </div>
   );

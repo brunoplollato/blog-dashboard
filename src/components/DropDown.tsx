@@ -13,7 +13,7 @@ function DropDown({ isActive }: DropDown) {
             <ListItem
               icon={<FiUser className="h-4 w-4" />}
               text="My profile"
-              to="/profile"
+              to="/user/profile"
               customClass="text-sm gap-2"
             />
           </ul>
@@ -21,7 +21,7 @@ function DropDown({ isActive }: DropDown) {
             <ListItem
               icon={<FiSettings className="h-4 w-4" />}
               text="Account settings"
-              to="/account"
+              to="/user/account"
               customClass="text-sm gap-2"
             />
             <button type="button" className="" onClick={logoutUser}>

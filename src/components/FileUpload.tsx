@@ -20,10 +20,10 @@ const FileUpload = ({ config, handleReset, imagePreview }: FileUpload) => {
       ) : (
         <div {...getRootProps()} style={dropzoneStyle as any}>
           <input {...getInputProps()} />
-          <FiUploadCloud className="text-purple-600 h-20 w-20" />
+          <FiUploadCloud className="text-indigo-600 h-20 w-20" />
           <p className="text-lg font-bold text-slate-700">
             Drop your image here, or
-            <span className="text-purple-500"> browse</span>
+            <span className="text-indigo-500"> browse</span>
           </p>
           <p className="text-sm text-slate-400">
             PNG, JPG, and GIF files are allowed - 5mb
