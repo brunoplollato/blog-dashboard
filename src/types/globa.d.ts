@@ -179,11 +179,13 @@ export declare global {
   type LoginFields = LoginField[];
 
   type MenuItem = {
+    [x: string]: any;
     icon?: ReactNode;
     text?: string;
     to?: string;
     customClass?: string;
-    isSelected?: boolean;
+    isSelected?: string;
+    subMenu?: SubMenuItem[];
     children?: ChildContextProvider;
   };
 
@@ -191,7 +193,14 @@ export declare global {
     isSelected: string;
   };
 
-  type Menu = {
-    isSelected: string;
+  type SubMenuItem = {
+    text: string;
+    to: string;
+    customClass: string;
+  };
+
+  type MenuItems = {
+    menuItems: MenuItem[];
+    selected?: string;
   };
 }

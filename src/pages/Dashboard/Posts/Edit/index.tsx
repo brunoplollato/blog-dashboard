@@ -314,7 +314,7 @@ function EditPost() {
               action="button"
               icon={<FiSave className="h-4 w-4 text-white mr-2" />}
               text="Save"
-              color="purple"
+              color="indigo"
               name="Save"
               disabled={false}
             />

@@ -17,6 +17,7 @@ import useCategory from '../../../../hooks/useCategory';
 import useTag from '../../../../hooks/useTag';
 import { useNavigate } from 'react-router-dom';
 import Breadcrumb from '../../../../components/Breadcrumb';
+import PageTitle from '../../../../components/PageTitle';
 
 function NewPost() {
   const navigate = useNavigate();
@@ -221,10 +222,10 @@ function NewPost() {
           { text: 'new post', link: '' },
         ]}
       />
-      <h2 className="text-xl font-bold mb-5 flex">New Post</h2>
-      <div className="flex gap-5">
-        <div className="flex flex-col gap-5 w-3/4">
-          <div className="bg-white border rounded-md p-4 border-slate-300 drop-shadow-sm">
+      <PageTitle title={'New Post'} />
+      <div className="flex gap-5 h-full">
+        <div className="flex flex-col gap-5 w-3/4 h-full">
+          <div className="bg-white border rounded-md p-4 border-slate-300 drop-shadow-sm h-full">
             <Input
               key="title"
               hasLabel={true}
@@ -245,16 +246,26 @@ function NewPost() {
               formats={formats}
               value={post.content}
               onChange={handleContentChange}
-              className="mt-8"
+              className="mt-14 h-3/4"
             />
           </div>
         </div>
-        <div className="flex flex-col gap-5 w-1/4">
-          <div className="bg-white rounded-md p-4 border border-slate-300 drop-shadow-sm">
+        <div className="flex flex-col gap-5 w-1/4 h-full">
+          <div className="flex flex-col bg-white rounded-md p-4 border border-slate-300 drop-shadow-sm h-full">
             <FileUpload
               config={config}
               handleReset={handleReset}
               imagePreview={post.cover}
+            />
+            <CustomSwitch
+              hasLabel={true}
+              handleChange={handleSwitchChange}
+              checked={post.published}
+              labelText="Public?"
+              labelFor="published"
+              id="published"
+              name="published"
+              isRequired={true}
             />
             <Input
               key="slug"
@@ -298,25 +309,17 @@ function NewPost() {
               id="tags"
               error={errors.tags}
             />
-            <CustomSwitch
-              hasLabel={true}
-              handleChange={handleSwitchChange}
-              checked={post.published}
-              labelText="Public?"
-              labelFor="published"
-              id="published"
-              name="published"
-              isRequired={true}
-            />
-            <FormAction
-              handleSubmit={handleSubmit}
-              action="button"
-              icon={<FiSave className="h-5 w-5 text-white" />}
-              text="Publish"
-              color="purple"
-              name="Publish"
-              disabled={false}
-            />
+            <div className="flex items-end h-full">
+              <FormAction
+                handleSubmit={handleSubmit}
+                action="button"
+                icon={<FiSave className="h-4 w-4 mr-1 text-white" />}
+                text="Save"
+                color="indigo"
+                name="Save"
+                disabled={false}
+              />
+            </div>
           </div>
         </div>
       </div>

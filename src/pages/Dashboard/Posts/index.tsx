@@ -27,6 +27,7 @@ import IndeterminateCheckbox from '../../../components/IndeterminateCheckbox';
 import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from '../../../components/Breadcrumb';
 import ConfirmationModal from '../../../components/ConfirmationModal';
+import PageTitle from '../../../components/PageTitle';
 
 function Posts() {
   const navigate = useNavigate();
@@ -299,7 +300,7 @@ function Posts() {
           { text: 'all posts', link: '' },
         ]}
       />
-      <h2 className="text-xl font-bold mb-5">Posts</h2>
+      <PageTitle title={'Posts'} />
       <div className="flex gap-5 h-full">
         <div className="flex flex-col gap-5 w-full">
           <div className="bg-white border rounded-md p-4 border-slate-300 drop-shadow-sm h-full">
@@ -312,7 +313,7 @@ function Posts() {
               />
               <Link
                 to="/dashboard/posts/new"
-                className="group relative h-10 flex items-center justify-center px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-700 hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 mt-5 w-32"
+                className="group relative h-10 flex items-center justify-center px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-700 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-5 w-32"
               >
                 <FiSave className="h-4 w-4 text-white mr-2" />
                 New Post

@@ -20,7 +20,7 @@ export default function Input({
 }: Input) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const fixedInputClass = `rounded-md appearance-none relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm ${
+  const fixedInputClass = `rounded-md appearance-none relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
     error ? 'border-red-500' : 'border-gray-300'
   }`;
   const classes = `${fixedInputClass} ${customClass && customClass} ${
@@ -35,7 +35,9 @@ export default function Input({
     <div className="flex flex-col relative mb-4">
       <label
         htmlFor={labelFor}
-        className={`${!hasLabel ? 'sr-only' : ''} text-md font-bold mb-2`}
+        className={`${
+          !hasLabel ? 'sr-only' : ''
+        } text-md font-bold mb-2 capitalize`}
       >
         {labelText}
       </label>

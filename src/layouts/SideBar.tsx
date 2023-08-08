@@ -1,3 +1,4 @@
+import menuItems from '../constants/menuItems';
 import Menu from '../components/Menu';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
@@ -27,7 +28,7 @@ function SideBar({ isSelected }: SideBar) {
         </div>
       </div>
       <div className="flex items-center">
-        <Menu isSelected={isSelected} />
+        <Menu menuItems={menuItems} selected={isSelected} />
       </div>
     </div>
   );
